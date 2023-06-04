@@ -12,9 +12,9 @@ zabbix_export:
         
         Zabbix template for monitoring AMD GPU temperatures (Core and Hot Spot), Core and Memory loads and Fan speed (in % and RPMs). Zabbix template created and tested on AMD RX 6700 XT.
         Template uses WMI Query to retrieve data from OpenHardwareMonitor.
-
+        
         Tested on Zabbix 6.4.3. Agent tested on Windows 10
-
+        
         ## Author
         
         DeMichel93
@@ -47,6 +47,16 @@ zabbix_export:
           delay: 3m
           history: 7d
           units: '%'
+          tags:
+            - tag: component
+              value: GPU
+        - uuid: 2b967a8462ba41b9b817c6ed4ae4b368
+          name: 'AMD GPU Core Temperature'
+          key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Core" and SensorType="Temperature"]'
+          delay: 3m
+          history: 7d
+          value_type: FLOAT
+          units: C
           tags:
             - tag: component
               value: GPU
@@ -106,16 +116,6 @@ zabbix_export:
           tags:
             - tag: component
               value: GPU
-        - uuid: 2b967a8462ba41b9b817c6ed4ae4b368
-          name: 'AMD GPU Core Temperature'
-          key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and SensorType="Temperature"]'
-          delay: 3m
-          history: 7d
-          value_type: FLOAT
-          units: C
-          tags:
-            - tag: component
-              value: GPU
   graphs:
     - uuid: 6b0e12e9c53f445982d4ef98ad93953c
       name: 'AMD GPU'
@@ -136,7 +136,7 @@ zabbix_export:
           calc_fnc: ALL
           item:
             host: 'AMD GPU'
-            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and SensorType="Temperature"]'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Core" and SensorType="Temperature"]'
         - sortorder: '3'
           color: F7941D
           calc_fnc: ALL
