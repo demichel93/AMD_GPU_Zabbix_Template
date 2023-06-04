@@ -1,5 +1,8 @@
 zabbix_export:
   version: '6.4'
+  template_groups:
+    - uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
   templates:
     - uuid: def54d5fae5b4b6397228ea1fe35d9f9
       template: 'AMD GPU'
@@ -10,22 +13,12 @@ zabbix_export:
         Zabbix template for monitoring AMD GPU temperatures (Core and Hot Spot), Core and Memory loads and Fan speed (in % and RPMs). Zabbix template created and tested on AMD RX 6700 XT.
         Template uses WMI Query to retrieve data from OpenHardwareMonitor.
         
-        
-         
-        
-        
-         
-        
-        
         Tested on Zabbix 6.4.3. Agent tested on Windows 10
-        
-        
         
         ## Author
         
         DeMichel93
       groups:
-        - name: 'AMD Mining Rigs'
         - name: Templates
       items:
         - uuid: 7659fc2684b442a7a02b901f045de428
@@ -114,3 +107,54 @@ zabbix_export:
           tags:
             - tag: component
               value: GPU
+  graphs:
+    - uuid: 6b0e12e9c53f445982d4ef98ad93953c
+      name: 'AMD GPU'
+      graph_items:
+        - color: 199C0D
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Core" and SensorType="Clock"]'
+        - sortorder: '1'
+          color: F63100
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Core" and SensorType="Load"]'
+        - sortorder: '2'
+          color: 2774A4
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and SensorType="Temperature"]'
+        - sortorder: '3'
+          color: F7941D
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and SensorType="Control"]'
+        - sortorder: '4'
+          color: FC6EA3
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Fan" and SensorType="Fan"]'
+        - sortorder: '5'
+          color: 6C59DC
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Hot Spot" and SensorType="Temperature"]'
+        - sortorder: '6'
+          color: C7A72D
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Memory" and SensorType="Clock"]'
+        - sortorder: '7'
+          color: BA2A5D
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Memory" and SensorType="Load"]'
