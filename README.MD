@@ -8,8 +8,9 @@ Template retrieves AMD GPU sensors and data:
 6. GPU Memory Clock
 7. GPU Memory Load
 8. GPU Memory
-9. GPU Fan Speed in %
-10. GPU Fan Speed in RPM
+9. GPU Total Power
+10. GPU Fan Speed in %
+11. GPU Fan Speed in RPM
 
 Template do not have any triggers and graphs.
 
