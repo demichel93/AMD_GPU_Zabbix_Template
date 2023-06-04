@@ -12,6 +12,8 @@ Template retrieves AMD GPU sensors and data:
 10. GPU Fan Speed in %
 11. GPU Fan Speed in RPM
 
+Template created and tested with AMD Radeon RX 6700XT.
+
 Template do not have any triggers and graphs.
 
 NOTE: Zabbix does round up numeric output of items, If you don't want Zabbix to round up numeric output you need to edit a func.inc.php file of a Zabbix Frontend. You can find it under /usr/share/zabbix/include/ (assuming you have frontend installed on the same server as Zabbix server). 
