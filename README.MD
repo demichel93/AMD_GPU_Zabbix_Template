@@ -14,7 +14,7 @@ Template retrieves AMD GPU sensors and data:
 
 Template created and tested with AMD Radeon RX 6700XT on Zabbix 6.4.3, WMI tested on Windows 10 host.
 
-Template does not have any triggers and graphs.
+Template does not have any triggers.
 
 NOTE: Zabbix rounds up numeric output of items, If you don't want Zabbix to round up numeric output you need to edit a func.inc.php file of a Zabbix Frontend. You can find it under /usr/share/zabbix/include/ (assuming you have frontend installed on the same server as Zabbix server). 
 Open the php file with a text editor of your choice, go to line with $blacklist in it and add Hz, KHz, MHz and GHz to the list of blacklisted units, example below:
