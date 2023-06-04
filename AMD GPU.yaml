@@ -12,9 +12,9 @@ zabbix_export:
         
         Zabbix template for monitoring AMD GPU temperatures (Core and Hot Spot), Core and Memory loads and Fan speed (in % and RPMs). Zabbix template created and tested on AMD RX 6700 XT.
         Template uses WMI Query to retrieve data from OpenHardwareMonitor.
-        
+
         Tested on Zabbix 6.4.3. Agent tested on Windows 10
-        
+
         ## Author
         
         DeMichel93
@@ -88,6 +88,15 @@ zabbix_export:
           tags:
             - tag: component
               value: GPU
+        - uuid: 470aca47936f40c8afc55df59de90c33
+          name: 'AMD GPU Total Power'
+          key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Total" and SensorType="Power"]'
+          delay: 3m
+          history: 7d
+          units: W
+          tags:
+            - tag: component
+              value: GPU
         - uuid: 6f973182d31e4f768651edf7f34f2c15
           name: 'AMD GPU Fan speed'
           key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and SensorType="Control"]'
@@ -158,3 +167,9 @@ zabbix_export:
           item:
             host: 'AMD GPU'
             key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Memory" and SensorType="Load"]'
+        - sortorder: '8'
+          color: F230E0
+          calc_fnc: ALL
+          item:
+            host: 'AMD GPU'
+            key: 'wmi.get[root\openhardwaremonitor,SELECT Value FROM Sensor WHERE Parent="/atigpu/0" and Name="GPU Total" and SensorType="Power"]'
