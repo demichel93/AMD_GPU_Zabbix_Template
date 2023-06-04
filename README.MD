@@ -7,10 +7,9 @@ Template retrieves AMD GPU sensors and data:
 5. GPU Hot Spot Temperature
 6. GPU Memory Clock
 7. GPU Memory Load
-8. GPU Memory
-9. GPU Total Power
-10. GPU Fan Speed in %
-11. GPU Fan Speed in RPM
+8. GPU Total Power
+9. GPU Fan Speed in %
+10. GPU Fan Speed in RPM
 
 Template created and tested with AMD Radeon RX 6700XT on Zabbix 6.4.3, WMI tested on Windows 10 host.
 
