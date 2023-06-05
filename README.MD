@@ -14,7 +14,7 @@ Template retrieves AMD GPU sensors and data:
 Template created and tested with AMD Radeon RX 6700XT on Zabbix 6.4.3, WMI tested on Windows 10 host.
 Here's the template in action:
 
-![image](https://github.com/demichel93/AMD_GPU_Zabbix_Template/assets/69034200/dea3e258-0ca7-476e-b2a8-2c1dd54f886e)
+![image](https://github.com/demichel93/AMD_GPU_Zabbix_Template/assets/69034200/86caea4d-f5d3-4f77-a955-48fb27dfa684)
 
 
 Template does not have any triggers.
